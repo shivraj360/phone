@@ -1,177 +1,345 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    height: 100vh;
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
     color: white;
-    
-
-    
+    overflow: hidden;
 }
-.phone{
-    margin: 2%;
-    height: 700px;
-    width: 360px;
-    border: solid gray 7px;
+
+/* ================= PHONE ================= */
+
+.phone {
+    width: min(360px, 100vw);
+    height: min(700px, 100dvh);
+
+    border: 7px solid gray;
     border-radius: 30px;
+
     position: relative;
     overflow: hidden;
-    
+
+    background-color: black;
 }
 
-.lock-screen{
-    height: 100%;
-    width: 100%;
-    background-image: url(./src/images/home-screen-bg/bg8.jpg);
-    background-position: center;
-    background-size: cover;
+/* ================= COMMON STATUS BAR ================= */
+
+.top-display-bar {
     position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 35px;
+
     display: flex;
-}
-.time{
-    position: fixed;
-    margin-left: 2%;
-    margin-top: .5%;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 12px;
+
+    z-index: 20;
 }
 
-.right-display-bar{
-    position: fixed;
-    margin-left: 19%;
-    margin-top: .5%;
+.time {
+    position: static;
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.right-display-bar {
+    position: static;
+
     display: flex;
+    align-items: center;
     gap: 10px;
 
+    margin: 0;
 }
 
-.camera{
-    height: 20px;
-    width: 20px;
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 50%;
-    position: fixed;
-    top: 6%;
-    left: 50%;
-
-}
-
-#change-background{
-    height: 60px;
-    width: 60px;
-    
-    background-color: red;
-    border: 1px;
-    border-radius: 50%;
-    text-align: center;
-    position: fixed;
-    bottom: 8%;
-    left: 48%;
-}
-#homebtn{
-    position: fixed ;
-    bottom: 5%;
-    left: 49%;
-
-}
-.lock-h1{
-    position: fixed;
-    top: 20%;
-    left: 43.7%;
-}
-
-.home-screen{
-    display: none;
-    
-    height: 100%;
-    width: 100%;
-    background-image: url(./src/images/home-screen-bg/bg6.jpg);
-    background-position: center;
-    background-size: cover;
+.camera {
     position: absolute;
 
-    flex-direction: column;
+    width: 18px;
+    height: 18px;
+
+    background-color: black;
+
+    border: 1px solid white;
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
 }
 
-#lockbtn{
-    position: fixed ;
-    bottom: 5%;
-    left: 49%;
+/* ================= LOCK SCREEN ================= */
 
-}
-
-.apps{
-   
-    border-radius: 10px; 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 60px  ;
-    margin-right: 25px;
-    height: 60%;
+.lock-screen {
+    height: 100%;
     width: 100%;
 
+    background-image: url("./src/images/home-screen-bg/bg8.jpg");
+    background-position: center;
+    background-size: cover;
+
+    position: absolute;
+
+    display: flex;
 }
 
-.app{
-    margin: 20px;
-    height: 40px;
-    width: 40px;
-    align-items: center;
-    text-align: center;
+.lock-h1 {
+    position: absolute;
+
+    top: 20%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: clamp(24px, 7vw, 36px);
+}
+
+/* ================= BUTTONS ================= */
+
+#change-background {
+    height: 60px;
+    width: 60px;
+
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+
+    position: absolute;
+
+    bottom: 8%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
     cursor: pointer;
 }
 
+#homebtn,
+#lockbtn {
+    position: absolute;
 
-.note-app{
+    bottom: 3%;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+/* ================= HOME SCREEN ================= */
+
+.home-screen {
+    display: none;
+
     height: 100%;
     width: 100%;
+
+    background-image: url("./src/images/home-screen-bg/bg6.jpg");
+    background-position: center;
+    background-size: cover;
+
+    position: absolute;
+
+    flex-direction: column;
+}
+
+/* ================= APPS ================= */
+
+.apps {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: clamp(10px, 3vw, 20px);
+
+    padding: 60px 15px 20px;
+
+    margin: 0;
+
+    height: auto;
+}
+
+.app {
+    width: 45px;
+    height: 45px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+/* ================= NOTE APP ================= */
+
+.note-app {
+    height: 100%;
+    width: 100%;
+
     background-color: black;
     color: white;
-    display: flex;
-    flex-direction: column;
+
+    position: absolute;
+
     display: none;
-    
+
+    flex-direction: column;
 }
 
+/* ================= APP NAV ================= */
 
-.app-nav{
-    display: flex;
-    
-    height: 5%;
-    width: 360px;
-    position: fixed;
-    bottom: 5%;
-    gap: 110px;
-    margin: 5px;
-    
-}
-
-.app-nav i{
-   
-    text-align: center;
-    font-size: xx-large;
-}
-
-.app-area{
-    height: 85%;
+.app-nav {
     width: 100%;
-    margin-top: 10%;
+    height: 50px;
+
+    position: absolute;
+
+    bottom: 10px;
+    left: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 0;
+
+    z-index: 10;
 }
 
-.data-display{
+.app-nav i {
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+/* ================= APP AREA ================= */
+
+.app-area {
+    width: 100%;
+    height: calc(100% - 60px);
+
+    margin-top: 40px;
+
+    padding: 15px;
+
+    overflow-y: auto;
+}
+
+/* ================= NOTE INPUT ================= */
+
+#note-input {
+    width: 70%;
+
+    height: 40px;
+
+    padding: 0 10px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 5px;
+}
+
+#note-addbtn {
+    height: 40px;
+
+    padding: 0 10px;
+
+    margin-left: 5px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+/* ================= NOTE DATA ================= */
+
+.data-display {
     margin-top: 15px;
+
     display: flex;
     flex-direction: column;
+
     gap: 10px;
 }
 
-.data-display p{
+.data-display p {
     background-color: gray;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    word-break: break-word;
 }
 
+.data-btn {
+    display: flex;
+    gap: 5px;
+}
+
+.data-btn button {
+    padding: 5px 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+
+    .phone {
+        width: 100vw;
+        height: 100dvh;
+
+        border-width: 0;
+        border-radius: 0;
+    }
+
+    .apps {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .app {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .top-display-bar {
+        padding: 0 10px;
+    }
+}
