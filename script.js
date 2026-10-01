@@ -69,18 +69,53 @@ const noteInput = document.querySelector("#note-input");
 const dataDisplay = document.querySelector(".data-display");
 
 noteAddBtn.addEventListener("click", () => {
-    
+
     if (noteInput.value === "") {
         alert("Please enter first");
         return;
     }
+
     
-    const newNoteEntery = document.createElement("p")
-    newNoteEntery.textContent = noteInput.value;
+    const noteEntry = document.createElement("div");
+    noteEntry.classList.add("note-entry");
+
     
-    dataDisplay.append(newNoteEntery);
-    noteInput.value = ""
-})
+    const newNoteEntry = document.createElement("p");
+    newNoteEntry.textContent = noteInput.value;
+
+    
+    const dataBtn = document.createElement("div");
+    dataBtn.classList.add("data-btn");
+
+    
+    const deleteNoteEntry = document.createElement("button");
+    deleteNoteEntry.textContent = "Delete";
+
+    
+    const editNoteEntry = document.createElement("button");
+    editNoteEntry.textContent = "Edit";
+
+    
+    dataBtn.append(editNoteEntry, deleteNoteEntry);
+    
+    deleteNoteEntry.addEventListener("click", () => {
+    noteEntry.remove();
+    });
+
+    editNoteEntry.addEventListener("click", () => {
+
+    noteInput.value = newNoteEntry.textContent;
+
+    });
+    
+    noteEntry.append(newNoteEntry, dataBtn);
+
+    
+    dataDisplay.append(noteEntry);
+
+    
+    noteInput.value = "";
+});
 
 noteInput.addEventListener("keydown", (event) => {
 
